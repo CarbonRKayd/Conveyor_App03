@@ -8,20 +8,33 @@ import os
 
 #####category_Output = "C:\\Users\\RamachandranV\\Desktop\\cmd\\2049\\Scene.xlsx"
 
-path = "C:\\Users\\RamachandranV\\Desktop\\Project\\Python\\Dashboard\\2031\\"
-dir_list = os.listdir(path)
+#path = "C:\\Users\\RamachandranV\\Desktop\\Project\\Python\\Dashboard\\2031\\"
+#dir_list = os.listdir(path)
 ##st.write(dir_list)
 
 st.write("# Welcome to Carbon RKayd! 👋")
 
-Intput_File_new = st.selectbox(
-         'Please Select the Project Asset File from below Option',
-         dir_list,
-         index=None,
-          placeholder="Select the Asset File...",
-        )
+st.markdown(
+            """
+                    
+
+                    ### Choose a Asset Input File
+            """
+
+                
+                )
+
+
+Intput_File_new = st.file_uploader(" ")
+
+#Intput_File_new = st.selectbox(
+#         'Please Select the Project Asset File from below Option',
+#         dir_list,
+#         index=None,
+#          placeholder="Select the Asset File...",
+#        )
          
-st.write('You selected:', Intput_File_new)
+#st.write('You selected:', Intput_File_new)
 
 st.markdown(
         """
@@ -31,13 +44,14 @@ st.markdown(
 
 ##category_Output = "C:\\Users\\RamachandranV\\Desktop\\Project\\Python\\Dashboard\\2031\\Assert.xlsx"
 
-Dir = "C:\\Users\\RamachandranV\\Desktop\\Project\\Python\\Dashboard\\2031\\"
+#Dir = "C:\\Users\\RamachandranV\\Desktop\\Project\\Python\\Dashboard\\2031\\"
 
 #category_Output = os.path.join(Dir, Intput_File_new)
 
+
 if Intput_File_new is not None:
 
-    category_Output = os.path.join(Dir, Intput_File_new)
+    #category_Output = os.path.join(Dir, Intput_File_new)
 
     categories = {
         'Conveyor': ['_'],
