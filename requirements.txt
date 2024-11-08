@@ -1,0 +1,10 @@
+altair
+numpy
+pandas
+pydeck
+streamlit
+beautifulsoup4
+datacompy
+lxml
+XlsxWriter
+openpyxl
