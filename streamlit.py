@@ -85,7 +85,7 @@ if Intput_File_new is not None:
 
     #df = pd.DataFrame(data)
 
-    df = pd.read_excel(category_Output, sheet_name='EquipmentProperty')
+    df = pd.read_excel(Intput_File_new, sheet_name='EquipmentProperty')
 
     # Split the 'Path' column
     df[['Conveyor', 'Device']] = df['{LocationPath}'].str.split('\\', expand=True).iloc[:, -2:]
