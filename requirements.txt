@@ -8,3 +8,4 @@ datacompy
 lxml
 XlsxWriter
 openpyxl
+streamlit-dynamic-filters==0.1.4
