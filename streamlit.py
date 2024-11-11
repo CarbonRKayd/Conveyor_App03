@@ -9,11 +9,11 @@ from streamlit_gsheets import GSheetsConnection
 # Create a connection object.
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-df = conn.read()
+###df = conn.read()
 
 # Print results.
-for row in df.itertuples():
-    st.write(f"{row.Name} has a :{row.Link}:")
+###for row in df.itertuples():
+###    st.write(f"{row.Name} has a :{row.Link}:")
 
 #category_Output = "C:\\Users\\RamachandranV\\Desktop\\cmd\\2049\\Scene_Category_output_2049_R1.xlsx"
 
@@ -36,8 +36,8 @@ st.markdown(
                 )
 
 
-Intput_File_new = st.file_uploader(" ")
-
+#####Intput_File_new = st.file_uploader(" ")
+Intput_File_new = conn.read()
 #Intput_File_new = st.selectbox(
 #         'Please Select the Project Asset File from below Option',
 #         dir_list,
