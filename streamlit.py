@@ -119,7 +119,7 @@ if Intput_File_new is not None:
 
     with st.sidebar:
         st.markdown('''
-          :white-background[Select Conveyor from below] ''')
+          :gray[Select Conveyor from below] ''')
 
     dynamic_filters.display_filters(location='sidebar')
 
@@ -331,16 +331,23 @@ if Intput_File_new is not None:
 
     #col1, col2, col3 = st.columns(3)
 
-    st.subheader("Motor")
-    st.dataframe(df_data)
-    st.subheader("Photot device")
-    st.dataframe(updated_list_PE)
-    st.subheader("Emergency Stop")
-    st.dataframe(updated_list_ES)
-    st.subheader("Full Line")
-    st.dataframe(updated_list_Full)
-    st.subheader("Half Line")
-    st.dataframe(updated_list_Half)
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Motor", "Photo Device", "E-Stop", "Full Line", "Half Line"])
+
+    with tab1:            
+      st.subheader("Motor")
+      st.dataframe(df_data)
+    with tab2:
+      st.subheader("Photot device")
+      st.dataframe(updated_list_PE)
+    with tab3:
+      st.subheader("Emergency Stop")
+      st.dataframe(updated_list_ES)
+    with tab4:
+      st.subheader("Full Line")
+      st.dataframe(updated_list_Full)
+    with tab5:
+      st.subheader("Half Line")
+      st.dataframe(updated_list_Half)
 
 
 
