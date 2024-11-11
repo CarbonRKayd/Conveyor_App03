@@ -116,11 +116,10 @@ if Intput_File_new is not None:
    </style>
    """, unsafe_allow_html=True)
 
-
+   html='''<p style="color:white">Select Conveyor From Below!</p>'''
 
     with st.sidebar:
-        st.markdown('''
-        :gray[Select Conveyor from drop down]''')
+        st.markdown(html, unsafe_allow_html=True)
 
     dynamic_filters.display_filters(location='sidebar')
 
