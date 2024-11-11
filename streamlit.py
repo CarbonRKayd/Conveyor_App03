@@ -54,11 +54,8 @@ selected_name = st.selectbox(
         )
 # Retrieve the corresponding link for the selected name
 selected_index = name_to_index[selected_name]
-st.write(selected_name)
-st.write(selected_index)
-Input_File_new = dir_list[selected_index]["Link"]
-st.write(Input_File_new)
-#st.write('You selected:', Intput_File_new)
+Intput_File_new = dir_list[selected_index]["Link"]
+st.write('You selected:', Intput_File_new)
 
 st.markdown(
         """
