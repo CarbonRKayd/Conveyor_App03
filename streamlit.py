@@ -104,7 +104,7 @@ if Intput_File_new is not None:
 
     con1 = st.connection('https://docs.google.com/spreadsheets/d/1EX44oRclwf7CufHKA40goOpXXrfrQ6KHnMzEYx9vq_g/edit?gid=1014204169#gid=1014204169', type=GSheetsConnection)
 
-    df = con1.read()
+    df = con1.read(worksheet="EquipmentProperty")
 
     #####df = pd.read_excel(Intput_File_new, sheet_name='EquipmentProperty')
 
