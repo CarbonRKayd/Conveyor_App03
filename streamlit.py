@@ -108,6 +108,16 @@ if Intput_File_new is not None:
 
     dynamic_filters = DynamicFilters(df, filters=['Conveyor'])
 
+    st.markdown("""
+    <style>
+        [data-testid=stSidebar] {
+          background-color: #ff000050;
+         }
+   </style>
+   """, unsafe_allow_html=True)
+
+
+
     with st.sidebar:
         st.write("Select Conveyor from drop down 👇")
 
