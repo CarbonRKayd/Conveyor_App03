@@ -60,6 +60,8 @@ st.markdown(
 
 #category_Output = os.path.join(Dir, Intput_File_new)
 
+Intput_File_new = st.file_uploader(" ")
+
 
 if Intput_File_new is not None:
 
