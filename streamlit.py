@@ -11,9 +11,13 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 
 df = conn.read()
 
+dir_list = {}
+
 # Print results.
 for row in df.itertuples():
     st.write(f"{row.Name} has a :{row.Link}:")
+    dir_list[row.Index] = row.Name
+    
 
 #category_Output = "C:\\Users\\RamachandranV\\Desktop\\cmd\\2049\\Scene_Category_output_2049_R1.xlsx"
 
