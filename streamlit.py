@@ -37,8 +37,7 @@ st.markdown(
 
 
 #####Intput_File_new = st.file_uploader(" ")
-Intput = conn.read(worksheet="EquipmentProperty")
-st.dataframe(Intput)
+
 Intput_File_new = st.selectbox(
          'Please Select the Project Asset File from below Option',
          dir_list,
