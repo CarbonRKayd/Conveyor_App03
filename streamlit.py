@@ -44,7 +44,7 @@ st.markdown(
 
 Intput_File_new = st.selectbox(
          'Please Select the Project Asset File from below Option',
-         dir_list[Link],
+         list(dir_list.values()),
          index=None,
           placeholder="Select the Asset File...",
         )
