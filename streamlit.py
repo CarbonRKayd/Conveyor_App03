@@ -19,6 +19,8 @@ for row in df.itertuples():
     ###dir_list[row.Index] = row.Name
     dir_list[row.Index] = {"Name": row.Name, "Link": row.Link}
 
+st.write(dir_list)
+
 # Create a mapping of Name to Index for the selectbox options
 name_to_index = {value["Name"]: index for index, value in dir_list.items()}
     
