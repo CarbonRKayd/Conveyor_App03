@@ -102,7 +102,7 @@ if Intput_File_new is not None:
 
     #df = pd.DataFrame(data)
 
-    con1 = st.connection('https://docs.google.com/spreadsheets/d/1EX44oRclwf7CufHKA40goOpXXrfrQ6KHnMzEYx9vq_g/edit?gid=1014204169#gid=1014204169', type=GSheetsConnection)
+    con1 = st.connection(spreadsheet ="https://docs.google.com/spreadsheets/d/1EX44oRclwf7CufHKA40goOpXXrfrQ6KHnMzEYx9vq_g/edit?gid=1014204169#gid=1014204169", type=GSheetsConnection)
 
     df = con1.read(worksheet="EquipmentProperty")
 
