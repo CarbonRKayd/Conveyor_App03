@@ -9,11 +9,11 @@ from streamlit_gsheets import GSheetsConnection
 # Create a connection object.
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-###df = conn.read()
+df = conn.read()
 
 # Print results.
-###for row in df.itertuples():
-###    st.write(f"{row.Name} has a :{row.Link}:")
+for row in df.itertuples():
+    st.write(f"{row.Name} has a :{row.Link}:")
 
 #category_Output = "C:\\Users\\RamachandranV\\Desktop\\cmd\\2049\\Scene_Category_output_2049_R1.xlsx"
 
@@ -39,14 +39,14 @@ st.markdown(
 #####Intput_File_new = st.file_uploader(" ")
 Intput = conn.read(worksheet="EquipmentProperty")
 st.dataframe(Intput)
-#Intput_File_new = st.selectbox(
-#         'Please Select the Project Asset File from below Option',
-#         dir_list,
-#         index=None,
-#          placeholder="Select the Asset File...",
-#        )
+Intput_File_new = st.selectbox(
+         'Please Select the Project Asset File from below Option',
+         dir_list,
+         index=None,
+          placeholder="Select the Asset File...",
+        )
          
-#st.write('You selected:', Intput_File_new)
+st.write('You selected:', Intput_File_new)
 
 st.markdown(
         """
@@ -60,10 +60,10 @@ st.markdown(
 
 #category_Output = os.path.join(Dir, Intput_File_new)
 
-Intput_File_new = st.file_uploader(" ")
+Intput_File_news = st.file_uploader(" ")
 
 
-if Intput_File_new is not None:
+if Intput_File_news is not None:
 
     #category_Output = os.path.join(Dir, Intput_File_new)
 
