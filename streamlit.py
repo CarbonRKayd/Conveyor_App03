@@ -12,7 +12,7 @@ import os
 #dir_list = os.listdir(path)
 ##st.write(dir_list)
 
-st.write("# Welcome to Carbon RKayd! 👋")
+st.write("# Welcome to Carbon RKayd!")
 
 st.markdown(
             """
