@@ -361,7 +361,7 @@ if selected_name is not None:
 
     #col1, col2, col3 = st.columns(3)
 
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Motor", "Photo Device", "E-Stop", "Full Line", "Half Line"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Motor", "Photo Eye", "E-Stop", "Full Line", "Half Line"])
 
     with tab1:            
       st.subheader("Motor")
