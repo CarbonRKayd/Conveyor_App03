@@ -66,7 +66,7 @@ st.markdown(
 Intput_File_news = st.file_uploader(" ")
 
 
-if Intput_File_news is not None:
+if Intput_File_new is not None:
 
     #category_Output = os.path.join(Dir, Intput_File_new)
 
@@ -102,7 +102,11 @@ if Intput_File_news is not None:
 
     #df = pd.DataFrame(data)
 
-    df = pd.read_excel(Intput_File_new, sheet_name='EquipmentProperty')
+    con1 = st.connection('https://docs.google.com/spreadsheets/d/1EX44oRclwf7CufHKA40goOpXXrfrQ6KHnMzEYx9vq_g/edit?gid=1014204169#gid=1014204169', type=GSheetsConnection)
+
+    df = con1.read()
+
+    #####df = pd.read_excel(Intput_File_new, sheet_name='EquipmentProperty')
 
     # Split the 'Path' column
     df[['Conveyor', 'Device']] = df['{LocationPath}'].str.split('\\', expand=True).iloc[:, -2:]
