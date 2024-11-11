@@ -367,7 +367,7 @@ if selected_name is not None:
       st.subheader("Motor")
       st.dataframe(df_data)
     with tab2:
-      st.subheader("Photot device")
+      st.subheader("Photo Eye")
       st.dataframe(updated_list_PE)
     with tab3:
       st.subheader("Emergency Stop")
