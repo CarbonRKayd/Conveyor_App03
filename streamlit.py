@@ -120,7 +120,7 @@ if Intput_File_new is not None:
 
     with st.sidebar:
         st.markdown('''
-        :White[Select Conveyor from drop down]''')
+        :gray[Select Conveyor from drop down]''')
 
     dynamic_filters.display_filters(location='sidebar')
 
