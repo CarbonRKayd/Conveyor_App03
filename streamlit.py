@@ -111,7 +111,7 @@ if Intput_File_new is not None:
     st.markdown("""
     <style>
         [data-testid=stSidebar] {
-          background-color: #ff000050;
+          background-color: #262B41;
          }
    </style>
    """, unsafe_allow_html=True)
