@@ -15,8 +15,12 @@ dir_list = {}
 
 # Print results.
 for row in df.itertuples():
-    st.write(f"{row.Name} has a :{row.Link}:")
-    dir_list[row.Index] = row.Name
+    ###st.write(f"{row.Name} has a :{row.Link}:")
+    ###dir_list[row.Index] = row.Name
+    dir_list[row.Index] = {"Name": row.Name, "Link": row.Link}
+
+# Create a mapping of Name to Index for the selectbox options
+name_to_index = {value["Name"]: index for index, value in dir_list.items()}
     
 
 #category_Output = "C:\\Users\\RamachandranV\\Desktop\\cmd\\2049\\Scene_Category_output_2049_R1.xlsx"
@@ -42,12 +46,16 @@ st.markdown(
 
 #####Intput_File_new = st.file_uploader(" ")
 
-Intput_File_new = st.selectbox(
+selected_name = st.selectbox(
          'Please Select the Project Asset File from below Option',
-         list(dir_list.values()),
+         ###list(dir_list.values()),
+         options=list(name_to_index.keys()),  # Display Names as options
          index=None,
           placeholder="Select the Asset File...",
         )
+# Retrieve the corresponding link for the selected name
+selected_index = name_to_index[selected_name]
+Input_File_new = dir_list[selected_index]["Link"]
          
 st.write('You selected:', Intput_File_new)
 
@@ -62,9 +70,6 @@ st.markdown(
 #Dir = "C:\\Users\\RamachandranV\\Desktop\\Project\\Python\\Dashboard\\2031\\"
 
 #category_Output = os.path.join(Dir, Intput_File_new)
-
-Intput_File_news = st.file_uploader(" ")
-
 
 if Intput_File_new is not None:
 
@@ -104,7 +109,10 @@ if Intput_File_new is not None:
 
     con1 = st.connection("gsheets", type=GSheetsConnection)
 
-    df = con1.read(spreadsheet="https://docs.google.com/spreadsheets/d/1F6El9swNECMEvH6mFx16PkAfVbe8_7UTwQrRLhCRttY/edit?gid=1438290628#gid=1438290628",worksheet="EquipmentProperty")
+    #####df = con1.read(spreadsheet="https://docs.google.com/spreadsheets/d/1F6El9swNECMEvH6mFx16PkAfVbe8_7UTwQrRLhCRttY/edit?gid=1438290628#gid=1438290628",worksheet="EquipmentProperty")
+
+    df = con1.read(spreadsheet=Intput_File_new,worksheet="EquipmentProperty")
+
 
     #####df = pd.read_excel(Intput_File_new, sheet_name='EquipmentProperty')
 
