@@ -69,7 +69,7 @@ st.markdown(
 
 #category_Output = os.path.join(Dir, Intput_File_new)
 
-if Intput_File_new is not None:
+if selected_name is not None:
 
     #category_Output = os.path.join(Dir, Intput_File_new)
 
