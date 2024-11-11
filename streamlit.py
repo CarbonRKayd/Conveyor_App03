@@ -52,16 +52,7 @@ selected_name = st.selectbox(
          index=None,
          placeholder="Select the Asset File...",
         )
-# Retrieve the corresponding link for the selected name
-selected_index = name_to_index[selected_name]
-Intput_File_new = dir_list[selected_index]["Link"]
-st.write('You selected:', selected_name)
 
-st.markdown(
-        """
-        **👈 Select a Conveyor from the dropdown on the left**     
-    """
-    )
 
 ##category_Output = "C:\\Users\\RamachandranV\\Desktop\\Project\\Python\\Dashboard\\2031\\Assert.xlsx"
 
@@ -72,6 +63,18 @@ st.markdown(
 if selected_name is not None:
 
     #category_Output = os.path.join(Dir, Intput_File_new)
+
+
+    # Retrieve the corresponding link for the selected name
+    selected_index = name_to_index[selected_name]
+    Intput_File_new = dir_list[selected_index]["Link"]
+    st.write('You selected:', selected_name)
+
+    st.markdown(
+            """
+            **👈 Select a Conveyor from the dropdown on the left**     
+        """
+        )
 
     categories = {
         'Conveyor': ['_'],
