@@ -21,8 +21,6 @@ for row in df.itertuples():
 
 # Create a mapping of Name to Index for the selectbox options
 name_to_index = {value["Name"]: index for index, value in dir_list.items()}
-
-st.write(name_to_index)
     
 #category_Output = "C:\\Users\\RamachandranV\\Desktop\\cmd\\2049\\Scene_Category_output_2049_R1.xlsx"
 
@@ -52,12 +50,14 @@ selected_name = st.selectbox(
          ###list(dir_list.values()),
          options=list(name_to_index.keys()),  # Display Names as options
          index=None,
-          placeholder="Select the Asset File...",
+         placeholder="Select the Asset File...",
         )
 # Retrieve the corresponding link for the selected name
 selected_index = name_to_index[selected_name]
+st.write(selected_name)
+st.write(selected_index)
 Input_File_new = dir_list[selected_index]["Link"]
-         
+
 st.write('You selected:', Intput_File_new)
 
 st.markdown(
