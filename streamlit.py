@@ -274,114 +274,113 @@ if selected_name is not None:
     # Check if "Jam" exists anywhere in the 'Name' column
     if final_Motor['Name'].str.contains("Jam Status").any():
         st.write("Selected conveyor is normal (Jam detected).")
+    
+        # Let's say we want to select the row where column 'B' has the value 'banana'
+        selected_row = final_Motor[final_Motor['Name'] == 'Jam Status']
+        # If you want to select specific values from other columns, such as column 'A
+        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
+        ####st.write(value_from_column)
+        ####st.dataframe(filtered_df)
+        # Update the list with the names of the IDs that exist in the DataFrame
+        #updated_list = [filtered_df.loc[filtered_df['Device'] == i, 'RealtimePointName'].values[0] if i in filtered_df['Device'].values else None for i in value_from_column]
+        target = 'Jam Status' 
+        ####------------st.markdown("Photot device")
+        # Ensure 'value_from_column' is iterable (not None)
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            updated_list_PE = [
+                (i, df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0]) 
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty
+            ]
+        else:
+            updated_list_PE = []  # Or handle it differently if needed
+        # Display the updated list
+        ####------------st.dataframe(updated_list_PE)  # Output will be 2
+    
+    
+    
+        # Let's say we want to select the row where column 'B' has the value 'banana'
+        selected_row = final_Motor[final_Motor['Name'] == 'Emergency Stop']
+        # If you want to select specific values from other columns, such as column 'A'
+        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
+        ####------------st.markdown("Emergency Stop")
+        target = 'Status' 
+        # Update the list with the names of the IDs that exist in the DataFrame and match the condition (Age)
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            updated_list_ES = [
+                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0]) 
+                #if i in filtered_df['Device'].values and (filtered_df['Name'] == target) 
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty 
+                        
+            ]
+        else:
+            updated_list_ES = []
+        ####------------st.dataframe(updated_list_ES)  # Output will be 2
+    
+    
+    
+    
+        # Let's say we want to select the row where column 'B' has the value 'banana'
+        selected_row = final_Motor[final_Motor['Name'] == 'Full Line']
+        # If you want to select specific values from other columns, such as column 'A'
+        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
+        ####------------st.markdown("Full Line")
+        target = 'Full Line' 
+        # Update the list with the names of the IDs that exist in the DataFrame and match the condition (Age)
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            updated_list_Full = [
+                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0]) 
+                #if i in filtered_df['Device'].values and (filtered_df['Name'] == target) 
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty 
+                        
+            ]
+        else:
+            updated_list_Full = []
+        ####------------st.dataframe(updated_list_Full)  # Output will be 2
+    
+    
+    
+        # Let's say we want to select the row where column 'B' has the value 'banana'
+        selected_row = final_Motor[final_Motor['Name'] == 'Half Line']
+        # If you want to select specific values from other columns, such as column 'A'
+        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
+        ####------------st.markdown("Half Line")
+        target = 'Half Line' 
+        # Update the list with the names of the IDs that exist in the DataFrame and match the condition (Age)
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            updated_list_Half = [
+                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0]) 
+                #if i in filtered_df['Device'].values and (filtered_df['Name'] == target) 
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty 
+                        
+            ]
+        else:
+            updated_list_Half = []
+        ####------------st.dataframe(updated_list_Half)  # Output will be 2
+    
+        #col1, col2, col3 = st.columns(3)
+    
+        tab1, tab2, tab3, tab4, tab5 = st.tabs(["Motor", "Jam", "E-Stop", "Full Line", "Half Line"])
+    
+        with tab1:            
+          st.subheader("Motor")
+          st.dataframe(df_data)
+        with tab2:
+          st.subheader("Jam")
+          st.dataframe(updated_list_PE)
+        with tab3:
+          st.subheader("Emergency Stop")
+          st.dataframe(updated_list_ES)
+        with tab4:
+          st.subheader("Full Line")
+          st.dataframe(updated_list_Full)
+        with tab5:
+          st.subheader("Half Line")
+          st.dataframe(updated_list_Half)
     else:
         st.write("Selected conveyor is spiral (No Jam detected).")
-
-    # Let's say we want to select the row where column 'B' has the value 'banana'
-    selected_row = final_Motor[final_Motor['Name'] == 'Jam Status']
-    # If you want to select specific values from other columns, such as column 'A
-    value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
-    ####st.write(value_from_column)
-    ####st.dataframe(filtered_df)
-    # Update the list with the names of the IDs that exist in the DataFrame
-    #updated_list = [filtered_df.loc[filtered_df['Device'] == i, 'RealtimePointName'].values[0] if i in filtered_df['Device'].values else None for i in value_from_column]
-    target = 'Jam Status' 
-    ####------------st.markdown("Photot device")
-    # Ensure 'value_from_column' is iterable (not None)
-    if value_from_column is not None and hasattr(value_from_column, '__iter__'):
-        updated_list_PE = [
-            (i, df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0]) 
-            for i in value_from_column
-            if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty
-        ]
-    else:
-        updated_list_PE = []  # Or handle it differently if needed
-    # Display the updated list
-    ####------------st.dataframe(updated_list_PE)  # Output will be 2
-
-
-
-    # Let's say we want to select the row where column 'B' has the value 'banana'
-    selected_row = final_Motor[final_Motor['Name'] == 'Emergency Stop']
-    # If you want to select specific values from other columns, such as column 'A'
-    value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
-    ####------------st.markdown("Emergency Stop")
-    target = 'Status' 
-    # Update the list with the names of the IDs that exist in the DataFrame and match the condition (Age)
-    if value_from_column is not None and hasattr(value_from_column, '__iter__'):
-        updated_list_ES = [
-            (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0]) 
-            #if i in filtered_df['Device'].values and (filtered_df['Name'] == target) 
-            for i in value_from_column
-            if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty 
-                    
-        ]
-    else:
-        updated_list_ES = []
-    ####------------st.dataframe(updated_list_ES)  # Output will be 2
-
-
-
-
-    # Let's say we want to select the row where column 'B' has the value 'banana'
-    selected_row = final_Motor[final_Motor['Name'] == 'Full Line']
-    # If you want to select specific values from other columns, such as column 'A'
-    value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
-    ####------------st.markdown("Full Line")
-    target = 'Full Line' 
-    # Update the list with the names of the IDs that exist in the DataFrame and match the condition (Age)
-    if value_from_column is not None and hasattr(value_from_column, '__iter__'):
-        updated_list_Full = [
-            (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0]) 
-            #if i in filtered_df['Device'].values and (filtered_df['Name'] == target) 
-            for i in value_from_column
-            if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty 
-                    
-        ]
-    else:
-        updated_list_Full = []
-    ####------------st.dataframe(updated_list_Full)  # Output will be 2
-
-
-
-    # Let's say we want to select the row where column 'B' has the value 'banana'
-    selected_row = final_Motor[final_Motor['Name'] == 'Half Line']
-    # If you want to select specific values from other columns, such as column 'A'
-    value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
-    ####------------st.markdown("Half Line")
-    target = 'Half Line' 
-    # Update the list with the names of the IDs that exist in the DataFrame and match the condition (Age)
-    if value_from_column is not None and hasattr(value_from_column, '__iter__'):
-        updated_list_Half = [
-            (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0]) 
-            #if i in filtered_df['Device'].values and (filtered_df['Name'] == target) 
-            for i in value_from_column
-            if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty 
-                    
-        ]
-    else:
-        updated_list_Half = []
-    ####------------st.dataframe(updated_list_Half)  # Output will be 2
-
-    #col1, col2, col3 = st.columns(3)
-
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Motor", "Jam", "E-Stop", "Full Line", "Half Line"])
-
-    with tab1:            
-      st.subheader("Motor")
-      st.dataframe(df_data)
-    with tab2:
-      st.subheader("Jam")
-      st.dataframe(updated_list_PE)
-    with tab3:
-      st.subheader("Emergency Stop")
-      st.dataframe(updated_list_ES)
-    with tab4:
-      st.subheader("Full Line")
-      st.dataframe(updated_list_Full)
-    with tab5:
-      st.subheader("Half Line")
-      st.dataframe(updated_list_Half)
-
 
 
