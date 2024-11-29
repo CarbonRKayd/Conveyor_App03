@@ -273,7 +273,7 @@ if selected_name is not None:
 
     # Check if "Jam" exists anywhere in the 'Name' column
     if final_Motor['Name'].str.contains("Jam Status").any():
-        st.write("Selected conveyor is normal (Jam detected).")
+        st.write("Selected conveyor is normal.")
     
         # Let's say we want to select the row where column 'B' has the value 'banana'
         selected_row = final_Motor[final_Motor['Name'] == 'Jam Status']
@@ -381,6 +381,6 @@ if selected_name is not None:
           st.subheader("Half Line")
           st.dataframe(updated_list_Half)
     else:
-        st.write("Selected conveyor is spiral (No Jam detected).")
+        st.write("Selected conveyor is spiral.")
 
 
