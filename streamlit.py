@@ -271,7 +271,10 @@ if selected_name is not None:
     ####------------st.markdown("Motor")
     ####------------st.dataframe(df_data)
 
-
+    if(final_Motor['Name'] == 'Jam Status'):
+        st.write("Selected conveyor is Spiral")
+    else:
+        st.write("Selected conveyor is Normal Conveyor")
 
     # Let's say we want to select the row where column 'B' has the value 'banana'
     selected_row = final_Motor[final_Motor['Name'] == 'Jam Status']
