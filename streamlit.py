@@ -94,19 +94,6 @@ if selected_name is not None:
     }
 
     def get_updated_list(final_motor, df, motor_name, target_name, cumulative_list=None):
-    """
-    Extracts the updated list based on conditions and appends it to a cumulative list.
-
-    Parameters:
-        final_motor (DataFrame): The DataFrame containing the 'Name' and 'extracted' columns.
-        df (DataFrame): The DataFrame containing 'Device', 'Name', and 'RealtimePointName' columns.
-        motor_name (str): The name to search for in the 'Name' column of `final_motor`.
-        target_name (str): The target name to filter in `df`.
-        cumulative_list (list, optional): The list to append results to. Defaults to an empty list.
-
-    Returns:
-        list: The cumulative list with the updated data appended.
-    """
     if cumulative_list is None:
         cumulative_list = []
 
