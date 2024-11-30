@@ -13,6 +13,19 @@ df = conn.read()
 
 dir_list = {}
 
+
+        selected_row = final_Motor[final_Motor['Name'] == 'Shaft Fault']
+        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
+        target = 'Jam Status' 
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            updated_list_Spiral = [
+                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0])  
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty                         
+            ]
+        else:
+            updated_list_Spiral = []
+
 # Print results.
 for row in df.itertuples():
     ###st.write(f"{row.Name} has a :{row.Link}:")
@@ -91,6 +104,40 @@ if selected_name is not None:
         'Encoder': ['EN'],
             
     }
+
+    def get_updated_list(final_motor, df, motor_name, target_name, cumulative_list=None):
+    """
+    Extracts the updated list based on conditions and appends it to a cumulative list.
+
+    Parameters:
+        final_motor (DataFrame): The DataFrame containing the 'Name' and 'extracted' columns.
+        df (DataFrame): The DataFrame containing 'Device', 'Name', and 'RealtimePointName' columns.
+        motor_name (str): The name to search for in the 'Name' column of `final_motor`.
+        target_name (str): The target name to filter in `df`.
+        cumulative_list (list, optional): The list to append results to. Defaults to an empty list.
+
+    Returns:
+        list: The cumulative list with the updated data appended.
+    """
+    if cumulative_list is None:
+        cumulative_list = []
+
+    # Selecting the row where 'Name' matches the motor_name
+    selected_row = final_motor[final_motor['Name'] == motor_name]
+    value_from_column = selected_row['extracted'].values[0] if not selected_row.empty else None
+
+    # Checking if the value is iterable
+    if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+        new_data = [
+            (i, df.loc[(df['Device'] == i) & (df['Name'] == target_name), 'RealtimePointName'].values[0])
+            for i in value_from_column
+            if not df.loc[(df['Device'] == i) & (df['Name'] == target_name)].empty
+        ]
+        cumulative_list.extend(new_data)
+    
+    return cumulative_list
+
+
 
     def categorize(text):
         if not isinstance(text, str) or len(text) == 0:
@@ -407,17 +454,26 @@ if selected_name is not None:
         else:
             updated_list_Spiral = []
 
-        selected_row = final_Motor[final_Motor['Name'] == 'Shaft Fault']
-        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
-        target = 'Jam Status' 
-        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
-            updated_list_Spiral = [
-                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0])  
-                for i in value_from_column
-                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty                         
-            ]
-        else:
-            updated_list_Spiral = []
+        # Initialize the cumulative list
+        cumulative_list_spiral = []
+        
+        # First call
+        cumulative_list_spiral = get_updated_list(
+            final_motor=final_Motor, 
+            df=df, 
+            motor_name='Shaft Fault', 
+            target_name='Jam Status', 
+            cumulative_list=cumulative_list_spiral
+        )
+        
+        # Second call
+        cumulative_list_spiral = get_updated_list_(
+            final_motor=final_Motor, 
+            df=df, 
+            motor_name='Drive Prox', 
+            target_name='Jam Status', 
+            cumulative_list=cumulative_list_spiral
+        )
         
         tab1, tab2, tab3  = st.tabs(["Motor", "Jam","Spiral"])
         
@@ -429,6 +485,6 @@ if selected_name is not None:
           st.dataframe(updated_list_GenJam)
         with tab3:
           st.subheader("Spiral")
-          st.dataframe(updated_list_Spiral)
+          st.dataframe(cumulative_list_spiral)
 
 
