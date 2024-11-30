@@ -94,23 +94,23 @@ if selected_name is not None:
     }
 
     def get_updated_list(final_motor, df, motor_name, target_name, cumulative_list=None):
-    if cumulative_list is None:
-        cumulative_list = []
-
-    # Selecting the row where 'Name' matches the motor_name
-    selected_row = final_motor[final_motor['Name'] == motor_name]
-    value_from_column = selected_row['extracted'].values[0] if not selected_row.empty else None
-
-    # Checking if the value is iterable
-    if value_from_column is not None and hasattr(value_from_column, '__iter__'):
-        new_data = [
-            (i, df.loc[(df['Device'] == i) & (df['Name'] == target_name), 'RealtimePointName'].values[0])
-            for i in value_from_column
-            if not df.loc[(df['Device'] == i) & (df['Name'] == target_name)].empty
-        ]
-        cumulative_list.extend(new_data)
+        if cumulative_list is None:
+            cumulative_list = []
     
-    return cumulative_list
+        # Selecting the row where 'Name' matches the motor_name
+        selected_row = final_motor[final_motor['Name'] == motor_name]
+        value_from_column = selected_row['extracted'].values[0] if not selected_row.empty else None
+    
+        # Checking if the value is iterable
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            new_data = [
+                (i, df.loc[(df['Device'] == i) & (df['Name'] == target_name), 'RealtimePointName'].values[0])
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target_name)].empty
+            ]
+            cumulative_list.extend(new_data)
+        
+        return cumulative_list
 
 
 
