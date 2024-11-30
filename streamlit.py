@@ -14,18 +14,6 @@ df = conn.read()
 dir_list = {}
 
 
-        selected_row = final_Motor[final_Motor['Name'] == 'Shaft Fault']
-        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
-        target = 'Jam Status' 
-        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
-            updated_list_Spiral = [
-                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0])  
-                for i in value_from_column
-                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty                         
-            ]
-        else:
-            updated_list_Spiral = []
-
 # Print results.
 for row in df.itertuples():
     ###st.write(f"{row.Name} has a :{row.Link}:")
