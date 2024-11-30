@@ -381,6 +381,15 @@ if selected_name is not None:
           st.subheader("Half Line")
           st.dataframe(updated_list_Half)
     else:
+
+        
         st.write("Selected conveyor is spiral.")
+        tab1, tab2  = st.tabs(["Motor", "Spiral"])
+         with tab1:            
+          st.subheader("Motor")
+          st.dataframe(df_data)
+        with tab2:
+          st.subheader("Jam")
+          st.write("test data")
 
 
