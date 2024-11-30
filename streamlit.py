@@ -384,7 +384,7 @@ if selected_name is not None:
         st.write("Selected conveyor is spiral 123.")
         tab1, tab2  = st.tabs(["Motor", "Spiral"])
         
-         with tab1:            
+        with tab1:            
           st.subheader("Motor")
           st.dataframe(df_data)
         with tab2:
