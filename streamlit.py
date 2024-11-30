@@ -449,6 +449,57 @@ if selected_name is not None:
             target_name='Jam Status', 
             cumulative_list=cumulative_list_spiral
         )
+
+        # Third call
+        cumulative_list_spiral = get_updated_list(
+            final_motor=final_Motor, 
+            df=df, 
+            motor_name='Infeed Jam', 
+            target_name='Jam Status', 
+            cumulative_list=cumulative_list_spiral
+        )
+
+        # Fourth call
+        cumulative_list_spiral = get_updated_list(
+            final_motor=final_Motor, 
+            df=df, 
+            motor_name='Outfeed Jam', 
+            target_name='Jam Status', 
+            cumulative_list=cumulative_list_spiral
+        )
+
+        # Fifth call
+        cumulative_list_spiral = get_updated_list(
+            final_motor=final_Motor, 
+            df=df, 
+            motor_name='Broken Chain', 
+            target_name='Jam Status', 
+            cumulative_list=cumulative_list_spiral
+        )
+
+        # Sixth call
+        cumulative_list_spiral = get_updated_list(
+            final_motor=final_Motor, 
+            df=df, 
+            motor_name='Slack Chain', 
+            target_name='Jam Status', 
+            cumulative_list=cumulative_list_spiral
+        )
+
+        # Sevent call
+        cumulative_list_spiral = get_updated_list(
+            final_motor=final_Motor, 
+            df=df, 
+            motor_name='Slat Fault', 
+            target_name='Jam Status', 
+            cumulative_list=cumulative_list_spiral
+        )
+
+        
+
+        
+
+        
         
         tab1, tab2, tab3  = st.tabs(["Motor", "Jam","Spiral"])
         
