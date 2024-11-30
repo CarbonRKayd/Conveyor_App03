@@ -395,8 +395,31 @@ if selected_name is not None:
         else:
             updated_list_GenJam = []
 
+        selected_row = final_Motor[final_Motor['Name'] == 'Drive Prox']
+        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
+        target = 'Jam Status' 
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            updated_list_Spiral = [
+                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0])  
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty                         
+            ]
+        else:
+            updated_list_Spiral = []
+
+        selected_row = final_Motor[final_Motor['Name'] == 'Shaft Fault']
+        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
+        target = 'Jam Status' 
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            updated_list_Spiral = [
+                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0])  
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty                         
+            ]
+        else:
+            updated_list_Spiral = []
         
-        tab1, tab2  = st.tabs(["Motor", "Spiral"])
+        tab1, tab2, tab3  = st.tabs(["Motor", "Jam","Spiral"])
         
         with tab1:            
           st.subheader("Motor")
@@ -404,5 +427,8 @@ if selected_name is not None:
         with tab2:
           st.subheader("General_Jam")
           st.dataframe(updated_list_GenJam)
+        with tab3:
+          st.subheader("Spiral")
+          st.dataframe(updated_list_Spiral)
 
 
