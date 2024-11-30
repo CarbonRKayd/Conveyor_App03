@@ -442,7 +442,7 @@ if selected_name is not None:
         )
         
         # Second call
-        cumulative_list_spiral = get_updated_list_(
+        cumulative_list_spiral = get_updated_list(
             final_motor=final_Motor, 
             df=df, 
             motor_name='Drive Prox', 
