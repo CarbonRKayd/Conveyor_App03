@@ -104,7 +104,7 @@ if selected_name is not None:
         # Checking if the value is iterable
         if value_from_column is not None and hasattr(value_from_column, '__iter__'):
             new_data = [
-                (i, df.loc[(df['Device'] == i) & (df['Name'] == target_name), 'RealtimePointName'].values[0],motor_name)
+                (motor_name,i, df.loc[(df['Device'] == i) & (df['Name'] == target_name), 'RealtimePointName'].values[0])
                 for i in value_from_column
                 if not df.loc[(df['Device'] == i) & (df['Name'] == target_name)].empty
             ]
