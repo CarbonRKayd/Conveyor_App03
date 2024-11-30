@@ -382,13 +382,27 @@ if selected_name is not None:
           st.dataframe(updated_list_Half)
     else:        
         st.write("Selected conveyor is spiral 123.")
+        
+        selected_row = final_Motor[final_Motor['Name'] == 'Gen Jam']
+        value_from_column = selected_row['extracted'].values[0]  # Extracting the value from column 'A'
+        target = 'Jam Status' 
+        if value_from_column is not None and hasattr(value_from_column, '__iter__'):
+            updated_list_GenJam = [
+                (i,df.loc[(df['Device'] == i) & (df['Name'] == target), 'RealtimePointName'].values[0])  
+                for i in value_from_column
+                if not df.loc[(df['Device'] == i) & (df['Name'] == target)].empty                         
+            ]
+        else:
+            updated_list_GenJam = []
+
+        
         tab1, tab2  = st.tabs(["Motor", "Spiral"])
         
         with tab1:            
           st.subheader("Motor")
           st.dataframe(df_data)
         with tab2:
-          st.subheader("Jam")
-          st.write("test data")
+          st.subheader("General_Jam")
+          st.dataframe(updated_list_GenJam)
 
 
